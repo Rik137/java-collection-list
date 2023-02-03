@@ -3,29 +3,35 @@ package practice;
 import java.util.ArrayList;
 
 public class TodoList {
+    ArrayList<String> toDoList = new ArrayList<>();
 
     public void add(String todo) {
-        // TODO: добавьте переданное дело в конец списка
+        toDoList.add(todo);
     }
 
     public void add(int index, String todo) {
-        // TODO: добавьте дело на указаный индекс,
-        //  проверьте возможность добавления
+        if (index < toDoList.size()) {
+            toDoList.add(index, todo);
+        } else {
+            toDoList.add(todo);
+        }
     }
 
     public void edit(int index, String todo) {
-        // TODO: заменить дело на index переданным todo индекс,
-        //  проверьте возможность изменения
+        if (index < toDoList.size()) {
+            toDoList.remove(index);
+            toDoList.add(index, todo);
+        }
     }
 
     public void delete(int index) {
-        // TODO: удалить дело находящееся по переданному индексу,
-        //  проверьте возможность удаления дела
+        if (index < toDoList.size()) {
+            toDoList.remove(index);
+        }
     }
 
     public ArrayList<String> getTodos() {
-        // TODO: вернуть список дел
-        return new ArrayList<>();
+        return toDoList;
     }
 
 }

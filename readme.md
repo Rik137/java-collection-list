@@ -1,32 +1,43 @@
-# Работа с проектом в IntelliJ IDEA
+# Todo List CLI Application  
 
-## Запуск тестов локально
+This is a simple **command-line Todo List application** written in Java.  
+It was created as a practice project to learn about **collections**, **basic input parsing**, and **command handling**.  
 
-Запуск на вашем компьютере перед отправкой в репозиторий
+## Features  
 
-### Используя интерфейс
+- **LIST** – show all tasks in the todo list.  
+- **ADD \<text\>** – add a new task to the end of the list.  
+- **ADD \<index\> \<text\>** – add a task at a specific position in the list.  
+- **EDIT \<index\> \<text\>** – replace an existing task at the given index with new text.  
+- **DELETE \<index\>** – remove a task from the list by its index.  
 
-- Вызовите контекстное меню папки `test/java`
-правой клавишей мыши.
-- Выберите пункт `Run 'All Tests'`
+## Example Usage  
 
-![Запуск тестов](https://i.imgur.com/30te74l.png)
+```bash
+> ADD Buy groceries
+> ADD 0 Call mom
+> LIST
+[Call mom, Buy groceries]
 
-### Используя горячие клавиши
+> EDIT 1 Buy groceries and fruits
+> LIST
+[Call mom, Buy groceries and fruits]
 
-Запуск всех тестов `Ctrl+Shift+F10` / `⌃⇧R`
-
-*Также вы можете запустить дебаг для анализа и поиска причины*
-
-## Запуск проверки codestyle
-
-- Запустите плагин checkstyle:
-
-### Используя интерфейс
-
-![Запуск проверки стиля кода](https://i.imgur.com/jxgn4In.png)
-
-В результате получите отчет. Если ошибки будут найдены, посмотреть их список и описание
-сможете в разделе
-
-![](https://i.imgur.com/vyl2YnF.png)
+> DELETE 0
+> LIST
+[Buy groceries and fruits]
+Implementation Notes
+Uses ArrayList<String> to store tasks.
+Reads input from the console with Scanner.
+Commands are parsed by splitting the input string with whitespace.
+Invalid commands return "команда не найдена" (Russian: command not found).
+Project Structure
+practice/
+ ├── TodoList.java   # Business logic for managing the list
+ └── Main.java       # CLI interface and command parsing
+How to Run
+Compile the code:
+javac practice/*.java
+Run the program:
+java practice.Main
+Type commands into the console.
